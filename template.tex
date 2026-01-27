@@ -1,0 +1,282 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Twenty Seconds Resume/CV
+% LaTeX Template
+% Version 1.0 (14/7/16)
+%
+% Original author:
+% Carmine Spagnuolo (cspagnuolo@unisa.it) with major modifications by 
+% Vel (vel@LaTeXTemplates.com) and Harsh (harsh.gadgil@gmail.com)
+%
+% License:
+% The MIT License (see included LICENSE file)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper]{twentysecondcv} % a4paper for A4
+
+% Command for printing spoken languages
+\newcommand\languages{
+\begin{itemize}[leftmargin=5mm]
+    \item \makebox[2.9cm]{Arabic\hfill} Native
+    \item \makebox[2.9cm]{English\hfill} Advanced (C1)
+    \item \makebox[2.9cm]{German\hfill} Elementary (B1.1)
+\end{itemize}
+}
+
+% Command for printing skill overview bubbles
+\newcommand\skills{
+\begin{itemize}[leftmargin=5mm]
+    \item Problem Solving
+    \item Quick Learner
+    \item Team Player
+    \item Software System Design
+    \item Full Stack Development
+    \item Programming Languages:
+    \begin{itemize}
+        \item \makebox[2cm]{Main\hfill} (\textbf{Java, JS, Golang})
+        \item \makebox[2cm]{Experienced\hfill} (\textbf{PHP, Python, C/C++})
+        \item \makebox[2cm]{Used Before\hfill} (\textbf{Scala})
+    \end{itemize}
+\end{itemize}
+}
+
+% Programming skill bars
+\renewcommand\programming{
+    % {C $\textbullet$ C++ / 1.0},
+    {C $\textbullet$ C++ $\textbullet$ HTML $\textbullet$ CSS/ 1.5},
+    {Python $\textbullet$ SQL $\textbullet$ Scala/ 4},
+    {Java $\textbullet$ JS $\textbullet$ Golang / 5.9}
+}
+
+% Projects text
+\newcommand\activities {
+    \begin{itemize}[leftmargin=5mm]
+        \item \textbf{IEEE GUC Student Branch:} Leading a Team of 14 voluntarily recruited software developers, to build software projects on different platforms, in order to gain more industry experience.
+        \item \textbf{Competitive Programming:} 
+        \begin{itemize}
+            \item Solved 1500+ algorithmic challenges on different online judges.
+            \item Finalist (out of 150+ teams) in the ACM Egyptian Collegiate Programming Contest 2016.
+        \end{itemize}
+        \item \textbf{Junior Teaching Assistant:} Assisted in teaching four courses at the GUC (Introduction to Computer Science, Introduction to Computer Programming, Data structures \& algorithms, Object Oriented Programming)
+    \end{itemize}
+}
+
+\renewcommand\projects{
+    \href{https://github.com/KEMDAK/Kallimachos}{\textbf{Kallimachos}}: Optical Character Recognition (OCR) error correction system for historical documents, The system is based on Recurrent Neural Networks.\\
+    \href{https://github.com/KEMDAK/sign_me_up}{\textbf{Sign Me Up}} - \textbf{NodeJS} server to translate English sentences to sign language. \\
+    \href{https://github.com/KEMDAK/DataBase-Mini_Engine}{\textbf{RDBMS}} - \textbf{JAVA} Relational database management system with B+ trees indexing. \\
+    \href{https://github.com/KEMDAK/IEEE_Elections_System}{\textbf{IEEE GUC Elections System}} - Election system built for IEEE GUC using \textbf{LARAVEL}. \\
+    % \textbf{Ohrob ya weld} - A horror game that was built using 3DsMax for modeling and OpenGL for the engine. \\
+    \href{https://github.com/KEMDAK/IEEEGUCSB-System}{\textbf{IEEE GUC System}} - \textbf{NodeJS} private social network to connect all members.
+}
+
+%----------------------------------------------------------------------------------------
+%	 PERSONAL INFORMATION
+%----------------------------------------------------------------------------------------
+% If you don't need one or more of the below, just remove the content leaving the command, e.g. \cvnumberphone{}
+
+\cvname{Kareem Mokhtar} % Your name
+\cvjobtitle{ Software Engineer } % Job
+% title/career
+\cvlinkedin{kareem-mokhtar}
+\cvgithub{KEMDAK}
+\cvnumberphone{+44 (0) 7931 937 440} % Phone number
+\cvsite{} % Personal website
+\cvmail{contact@kareem-mokhtar.com} % Email address
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+    \makeprofile % Print the sidebar
+    
+    %----------------------------------------------------------------------------------------
+    %	 EDUCATION
+    %----------------------------------------------------------------------------------------
+    \section{Education}
+    \begin{twenty} % Environment for a list with descriptions
+    	\twentyitem
+        	{Oct 2018}
+                {May 2022}
+            {\href{https://www.tum.de/}{Technical University of Munich, Germany}}
+            {}
+            {M. Sc., Computer Science}
+            {\\}
+    	\twentyitem
+        	{Apr 2017}
+    		{Sep 2017}
+            {\href{https://www.dfki.de/}{German Research Center for Artificial Intelligence (DFKI), Germany}}
+            {}
+            {Bachelor Project (Kallimachos) and Thesis \textbf{ GPA: 0.7 (German A+)}}
+            {\\}
+    	\twentyitem
+        	{Oct 2013}
+    		{Jul 2018}
+            {\href{http://www.guc.edu.eg/}{German University in Cairo (GUC), Egypt}}
+            {}
+            {B. Sc., Computer Science and Engineering \textbf{ GPA: 1.12 (German A)}}
+    	%\twentyitem{<dates>}{<title>}{<organization>}{<location>}{<description>}
+    \end{twenty}
+    
+    \section{Publications}
+    \href{https://ieeexplore.ieee.org/abstract/document/8395234}{\textbf{Mokhtar, Kareem}, Syed Saqib Bukhari, and Andreas Dengel. "OCR Error Correction: State-of-the-Art vs an NMT-based Approach." 2018 13th IAPR International Workshop on Document Analysis Systems (DAS). IEEE, 2018.} %\vspace{2mm}
+
+    
+    %----------------------------------------------------------------------------------------
+    %	 Projects
+    %----------------------------------------------------------------------------------------
+    
+    %\section{Selected Projects}
+   
+    %\projects
+    
+    %----------------------------------------------------------------------------------------
+    %	 RESEARCH
+    %----------------------------------------------------------------------------------------
+    
+    % \section{Research}
+    
+    % \begin{twenty}
+    % 	\twentyitem
+    %     	{Apr 2017}
+    % 		{Sep 2017}
+    %         {Junior Researcher}
+    %         {\href{http://www.dfki.de/}{German Research Center for Artificial Intelligence (DFKI)}}
+    %        {
+    %            \textbf{Thesis}: OCR Error Correction: State-of-the-art vs An NMT Based Approach
+    %            \begin{itemize}
+    %                \item Designed and implemented an Optical Character Recognition (OCR) error correction system for historical documents.
+    %                \item The system is based on Recurrent Neural Networks. It reduced the OCR error by 3\% over the state-of-the-art techniques.
+    %                \item This was part of an Excellence scholarship that was funded by The DFKI and DAAD.
+    %                \item \textbf{Tools}: Python, TensorFlow, ExpressJS, AngularJS, MongoDB %\vspace{2mm}
+    %     		\end{itemize}
+    %        }
+    % \end{twenty}
+    
+    %----------------------------------------------------------------------------------------
+    %	 EXPERIENCE
+    %----------------------------------------------------------------------------------------
+    
+    \section{Experience}
+    \begin{twenty} % Environment for a list with descriptions
+    	%\twentyitem{<start date>}{<start date>}{<title>}{<employer>}{<description>}
+        \twentyitem
+      		{June 2021}
+    		{Aug 2021}
+            {Software Engineer Intern}
+            {\large\textbf{\href{https://about.fb.com/}{Meta}}}
+            {
+                \begin{itemize}
+                    \item Part of the Integrity Experience team, responsible for empowering users to make informed decisions when they see content on Facebook’s social media platforms.
+                    \item \textbf{Tools: Hacklang (PHP), Python.} %\vspace{2mm}
+                \end{itemize}
+            }
+            {\\}
+        \twentyitem
+      		{Mar 2021}
+    		{May 2021}
+            {Software Engineer Intern}
+            {\large\textbf{\href{https://www.hubspot.com/}{HubSpot}}}
+            {
+                \begin{itemize}
+                    \item Working as part of the Billing Management Experience team. Responsible for comprehensibility of Billing-related PDF documents. 
+                    \item \textbf{Tools: Java, React, HTML, CSS, Kafka.} %\vspace{2mm}
+                \end{itemize}
+            }
+            {\\}
+        \twentyitem
+      		{Dec 2018}
+    		{Feb 2021}
+            {Lead Software Engineer (Infrastructure)}
+            {\large\textbf{\href{https://bleenco.com/}{Bleenco GmbH}}}
+            {
+                \begin{itemize}
+                    \item Leading a team of developers and designing scalable Software solutions for ensuring and increasing occupational safety.
+                    \item \textbf{Tools: Golang, C++, TimeScaleDB, RabbitMQ, GRPC, Kubernetes.} %\vspace{2mm}
+                \end{itemize}
+            }
+            {\\}
+        \twentyitem
+       		{Jul 2018}
+    		{Sep 2018}
+            {Backend Developer}
+            {\large\textbf{\href{https://elmenus.com}{ElMenus}}}
+            {
+                \begin{itemize}
+                    \item Responsible for the backend services for discovering and ordering from restaurants.
+                    \item Analyzing the data produced by the clients to improve the experience of the users, by recommending restaurants they might like.
+                    \item \textbf{Tools: NodeJS, Scala, Apache Spark, MariaDB, Apache Cassandra, Elastic Search.} %\vspace{2mm}
+                \end{itemize}
+            }
+            {\\}
+    	\twentyitem
+       		{Jan 2018}
+    		{Jun 2018}
+            {Software Engineer (Free Lancing)}
+            {\large\textbf{\href{http://www.dfki.de/}{DFKI}}}
+            {
+                \begin{itemize}
+                    \item Research project to develop a proof of concept for a Tensor Factorization Music Recommender system for runners. 
+                    \item Implemented the recommendation algorithm, backend server, and an Android application.
+                    \item \textbf{Tools: Java, ExpressJS, MySQL} %\vspace{2mm}
+                \end{itemize}
+            }
+            {\\}
+        \twentyitem
+       	    {Apr 2017}
+    		{Sep 2017}
+            {Junior Researcher}
+            {\large\textbf{\href{http://www.dfki.de/}{DFKI}}}
+            {
+                \begin{itemize}
+                    \item This was part of my bachelor thesis research. Worked on OCR Error correction using deep learning techniques.
+                    \item My research there resulted an error reduction by 3\% over the state-of-the-art techniques as shown in my publication mentioned above.
+                    % \item This was part of an Excellence scholarship that was funded by The German Research Center for Artificial Intelligence (DFKI) and DAAD.
+                    \item \textbf{Tools: ExpressJS, MySQL, Tensorflow}
+                \end{itemize}
+            }
+            {\\}
+        \iffalse
+            \twentyitem
+                {Nov 2016}
+                {Dec 2016}
+                {Software Developer}
+                {\large\textbf{\href{http://www.quanode.com/}{QuaNode}}}
+                {
+                    \begin{itemize}
+                        \item Worked on Behaviours a software project to help deliver backend as a service through code generation.
+                        \item \textbf{Tools: ExpressJS, Kubernetes, MySQL} %\vspace{2mm}
+                    \end{itemize}
+                }
+        \fi
+        \twentyitem
+       		{Jun 2016}
+    		{Jul 2016}
+            {Software Developer Intern}
+            {\large\textbf{\href{https://eseed.net/}{eSEED}}}
+            {
+                \begin{itemize}
+                    \item Worked as a part of a software development team to develop different Android applications, Web applications using WordPress and web-servers using ExpressJS and Node.js.
+                    \item \textbf{Tools: WordPress, Java, ExpressJS, Qt, MySQL, MongoDB} %\vspace{2mm}
+                \end{itemize}
+            }
+            {\\}
+        \iffalse
+            \twentyitem
+                {Jan 2015}
+                {Jan 2016}
+                {Junior Teaching Assistant}
+                {\href{http://www.guc.edu.eg/}{German University in Cairo}}
+                {
+                    \begin{itemize}
+                        \item TA for CSEN 102 (Introduction to Computer Science), CSEN 202 (Introduction to Computer Programming), CSEN 301 (Data structures \& algorithms) and CSEN 401 (OOP) courses
+                    \end{itemize}
+                }
+                {\\}
+    	\fi
+    \end{twenty}
+\end{document}
