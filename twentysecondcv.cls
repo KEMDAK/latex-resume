@@ -63,21 +63,20 @@
 
 \definecolor{white}{RGB}{255,255,255}
 \definecolor{gray}{HTML}{4D4D4D}
-\definecolor{sidecolor}{HTML}{E7E7E7}
-\definecolor{mainblue}{HTML}{0E5484}
-\definecolor{maingray}{HTML}{B9B9B9}
+\definecolor{sidecolor}{HTML}{000000}  % Pure black sidebar to match website
+\definecolor{mainblue}{HTML}{00ff00}  % Bright green for sidebar accents (website primary)
+\definecolor{maingray}{HTML}{1a1a1a}  % Dark gray for skill bars background
 
-\definecolor{pblue}{HTML}{0395DE}
+\definecolor{pblue}{HTML}{00aa00}  % Darker green for headings on light background (readable)
+\definecolor{sidegreen}{HTML}{00ff00}  % Bright green for sidebar elements
 
 \definecolor{darkgray}{HTML}{333333}
-\definecolor{gray}{HTML}{4D4D4D}
 \definecolor{lightgray}{HTML}{999999}
-\definecolor{green}{HTML}{C2E15F}
+\definecolor{green}{HTML}{00ff00}
 \definecolor{orange}{HTML}{FDA333}
 \definecolor{purple}{HTML}{D3A4F9}
 \definecolor{red}{HTML}{FB4485}
 \definecolor{blue}{HTML}{6CE0F1}
-\definecolor{pblue}{HTML}{0395DE}
 \definecolor{materialpurple}{HTML}{9C27B0}
 \definecolor{materialindigo}{HTML}{3F51B5}
 \definecolor{materialblue}{HTML}{2196F3}
@@ -89,9 +88,9 @@
 \definecolor{materialbrown}{HTML}{795548}
 \definecolor{materialred}{HTML}{FF4436}
 \definecolor{materialorange}{HTML}{FF5722}
-\definecolor{linkedin}{HTML}{0085AE}
-\definecolor{test}{HTML}{0077be}
-\definecolor{yt}{HTML}{c71610}
+\definecolor{linkedin}{HTML}{00ff00}  % Green for LinkedIn icon
+\definecolor{test}{HTML}{00ff00}  % Green for globe icon
+\definecolor{yt}{HTML}{00ff00}  % Green for email icon
 
 \ifdefined\@cv@print
   \colorlet{green}{gray}
@@ -105,7 +104,7 @@
   \colorlet{fillheader}{white}
   \colorlet{header}{gray}
 \fi
-\colorlet{textcolor}{gray}
+\colorlet{textcolor}{white}  % White text for dark sidebar
 \colorlet{headercolor}{gray}
 
 %----------------------------------------------------------------------------------------
@@ -137,8 +136,8 @@
 
 \newcommand{\profilesection}[2]{
         \vspace{1mm}{
-            \rule[\baselineskip]{\linewidth}{2pt}\\
-            \color{black!80} \Large \textbf{#1}
+            {\color{sidegreen}\rule[\baselineskip]{\linewidth}{2pt}}\\
+            \color{sidegreen} \Large \textbf{#1}
         }
 }
 
@@ -193,73 +192,50 @@
     %------------------------------------------------
     
     \vspace{2mm}
-    {\Huge\color{pblue}\cvname}
+    {\Huge\color{sidegreen}\cvname}
     
     \vspace{2mm}
 
     %------------------------------------------------
     
-    {\Large\color{black!80}\cvjobtitle}
+    {\Large\color{white!80}\cvjobtitle}
 
     %------------------------------------------------
     
     \vspace{1mm}
-    \renewcommand{\arraystretch}{1.5}
-    \begin{tabular}{p{1cm} @{\hskip 0.2cm}p{5cm}}
+    \renewcommand{\arraystretch}{1.6}
+    \begin{tabular}{@{}c@{\hskip 0.3cm}l@{}}
        \ifthenelse{\equal{\cvnumberphone}{}}{}{
-      		{$
-              \begin{array}{l}
-              \hspace{2mm} \Huge \textnormal{\faMobile} 
-              \end{array}
-              $} 
-            & \href{tel:\cvnumberphone}{\cvnumberphone}\\
+            \textcolor{sidegreen}{\Large\faMobile} & \textcolor{white}{\href{tel:\cvnumberphone}{\cvnumberphone}}\\
       }
       \ifthenelse{\equal{\cvsite}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{2.8mm} \huge \textnormal{\textcolor{test}{\faGlobe}}
-              \end{array}
-              $} 
-            & \href{http://\cvsite}{\cvsite} \\
+            \textcolor{sidegreen}{\large\faGlobe} & \textcolor{white}{\href{http://\cvsite}{\cvsite}} \\
       }
       \ifthenelse{\equal{\cvmail}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{0.3mm} \huge \textnormal{\textcolor{yt}{\faEnvelopeO}}
-              \end{array}
-              $} 
-            & \href{mailto:\cvmail}{\cvmail} \\
+            \textcolor{sidegreen}{\large\faEnvelope} & \textcolor{white}{\href{mailto:\cvmail}{\cvmail}} \\
       }
       \ifthenelse{\equal{\cvlinkedin}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{1mm} \huge \textnormal{\textcolor{linkedin}{\faLinkedin}}
-              \end{array}
-              $} & \href{https://www.linkedin.com/in/\cvlinkedin}{\cvlinkedin} \\
+            \textcolor{sidegreen}{\large\faLinkedin} & \textcolor{white}{\href{https://www.linkedin.com/in/\cvlinkedin}{\cvlinkedin}} \\
       }  
       \ifthenelse{\equal{\cvgithub}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{1mm} \huge \textnormal{\faGithub}
-              \end{array}
-              $} & \href{https://www.github.com/\cvgithub}{\cvgithub} \\
+            \textcolor{sidegreen}{\large\faGithub} & \textcolor{white}{\href{https://www.github.com/\cvgithub}{\cvgithub}} \\
       }   
     \end{tabular}
 
     %------------------------------------------------
     \profilesection{Languages}\\
     
-    \languages
+    {\color{white}\languages}
     
     %------------------------------------------------
     \profilesection{Skills}\\
 
-	\skills
+	{\color{white}\skills}
         
     %------------------------------------------------
     \profilesection{Extracurricular Activities}\\
     
-    \activities
+    {\color{white}\activities}
             
     %------------------------------------------------
     % \profilesection{Projects}\\
