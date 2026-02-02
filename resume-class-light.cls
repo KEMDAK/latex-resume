@@ -1,10 +1,10 @@
-\ProvidesClass{resume-class}[2025/01/27 Kareem Mokhtar Resume Class]
+\ProvidesClass{resume-class-light}[2025/01/27 Kareem Mokhtar Resume Class - Light Theme]
 \LoadClass{article}
 \NeedsTeXFormat{LaTeX2e}
 
 %----------------------------------------------------------------------------------------
 %	 REQUIRED PACKAGES
-%-----------------------------------------------------------------------	-----------------
+%----------------------------------------------------------------------------------------
 
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[sfdefault]{ClearSans}
@@ -58,45 +58,39 @@
 \fi
 
 %----------------------------------------------------------------------------------------
-%	 COLOURS - DARK THEME (Matches website: Green Terminal Vibe)
+%	 COLOURS - GITHUB LIGHT THEME
 %----------------------------------------------------------------------------------------
-
-% Website color palette:
-% --primary: #00ff00 (neon green)
-% --background: #000000 (pure black)
-% --muted-foreground: #00aa00 (darker green)
-% --card: #0a0a0a (very dark gray)
 
 \definecolor{white}{RGB}{255,255,255}
 \definecolor{gray}{HTML}{4D4D4D}
-\definecolor{sidecolor}{HTML}{000000}  % Pure black sidebar (matches --background)
-\definecolor{mainblue}{HTML}{00ff00}  % Neon green for sidebar accents (matches --primary)
-\definecolor{maingray}{HTML}{0a0a0a}  % Very dark gray for skill bars background (matches --card)
+\definecolor{sidecolor}{HTML}{0366d6}  % GitHub blue sidebar
+\definecolor{mainblue}{HTML}{ffffff}  % White for sidebar accents
+\definecolor{maingray}{HTML}{e1e4e8}  % Light gray for skill bars background
 
-\definecolor{pblue}{HTML}{006600}  % Dark green for headings on white background (readable)
-\definecolor{sidegreen}{HTML}{00ff00}  % Neon green for sidebar elements (matches --primary)
+\definecolor{pblue}{HTML}{0366d6}  % GitHub blue for headings
+\definecolor{sidegreen}{HTML}{ffffff}  % White for sidebar elements
 
 \definecolor{darkgray}{HTML}{333333}
-\definecolor{lightgray}{HTML}{00aa00}  % Muted green (matches --muted-foreground)
-\definecolor{green}{HTML}{00ff00}  % Neon green (matches --primary)
-\definecolor{orange}{HTML}{00cc00}  % Slightly darker green for variety
-\definecolor{purple}{HTML}{00ff00}
-\definecolor{red}{HTML}{00ff00}
-\definecolor{blue}{HTML}{00ff00}
-\definecolor{materialpurple}{HTML}{00ff00}
-\definecolor{materialindigo}{HTML}{00ff00}
-\definecolor{materialblue}{HTML}{00ff00}
-\definecolor{materialcyan}{HTML}{00ff00}
-\definecolor{materialteal}{HTML}{00ff00}
-\definecolor{materialgreen}{HTML}{00ff00}
-\definecolor{materiallime}{HTML}{00cc00}
-\definecolor{materialamber}{HTML}{00ff00}
-\definecolor{materialbrown}{HTML}{00aa00}
-\definecolor{materialred}{HTML}{00ff00}
-\definecolor{materialorange}{HTML}{00ff00}
-\definecolor{linkedin}{HTML}{00ff00}  % Neon green for LinkedIn icon
-\definecolor{test}{HTML}{00ff00}  % Neon green for globe icon
-\definecolor{yt}{HTML}{00ff00}  % Neon green for email icon
+\definecolor{lightgray}{HTML}{999999}
+\definecolor{green}{HTML}{22863a}  % GitHub green
+\definecolor{orange}{HTML}{FDA333}
+\definecolor{purple}{HTML}{D3A4F9}
+\definecolor{red}{HTML}{FB4485}
+\definecolor{blue}{HTML}{0366d6}
+\definecolor{materialpurple}{HTML}{9C27B0}
+\definecolor{materialindigo}{HTML}{3F51B5}
+\definecolor{materialblue}{HTML}{2196F3}
+\definecolor{materialcyan}{HTML}{00BCD4}
+\definecolor{materialteal}{HTML}{009688}
+\definecolor{materialgreen}{HTML}{4CAF50}
+\definecolor{materiallime}{HTML}{CDDC39}
+\definecolor{materialamber}{HTML}{FFC107}
+\definecolor{materialbrown}{HTML}{795548}
+\definecolor{materialred}{HTML}{FF4436}
+\definecolor{materialorange}{HTML}{FF5722}
+\definecolor{linkedin}{HTML}{0366d6}  % GitHub blue for LinkedIn icon
+\definecolor{test}{HTML}{0366d6}  % GitHub blue for globe icon
+\definecolor{yt}{HTML}{0366d6}  % GitHub blue for email icon
 
 \ifdefined\@cv@print
   \colorlet{green}{gray}
@@ -110,7 +104,7 @@
   \colorlet{fillheader}{white}
   \colorlet{header}{gray}
 \fi
-\colorlet{textcolor}{white}  % White text for dark sidebar
+\colorlet{textcolor}{white}  % White text for blue sidebar
 \colorlet{headercolor}{gray}
 
 %----------------------------------------------------------------------------------------
@@ -299,16 +293,6 @@
 	\end{tabular*}
 }
 
-% \newcommand{\twentyitem}[5]{%
-% 	#1&\parbox[t]{0.83\textwidth}{%
-% 		\textbf{#2}% 
-% 		\hfill%
-% 		{\footnotesize#3}\\%
-%         \ifblank{#4}{}{#4 \\}
-% 		#5\vspace{\parsep}%
-% 	}\\
-% }
-
 \newcommand{\twentyitem}[6]{%
 	#1&\parbox[t]{0.85\textwidth}{%
 		\textbf{#3}%
@@ -370,4 +354,3 @@
     % sets the opacity at which the bubble text is shown
     bubble text opacity = 1,
 }
-

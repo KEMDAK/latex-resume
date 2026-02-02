@@ -1,0 +1,49 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Kareem Mokhtar - Resume (Light Theme)
+% LaTeX Template based on Twenty Seconds Resume/CV
+%
+% Original template by:
+% Carmine Spagnuolo (cspagnuolo@unisa.it) with major modifications by 
+% Vel (vel@LaTeXTemplates.com) and Harsh (harsh.gadgil@gmail.com)
+%
+% License: MIT License
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	 DOCUMENT CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper]{resume-class-light}
+
+%----------------------------------------------------------------------------------------
+%	 SIDEBAR CONTENT (Languages, Skills, Activities)
+%----------------------------------------------------------------------------------------
+
+\input{sections/sidebar-content}
+
+%----------------------------------------------------------------------------------------
+%	 PERSONAL INFORMATION
+%----------------------------------------------------------------------------------------
+
+\input{sections/personal-info}
+
+%----------------------------------------------------------------------------------------
+%	 DOCUMENT BODY
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+    % Render the sidebar with personal info, languages, skills, and activities
+    \makeprofile
+    
+    % Education section
+    \input{sections/education}
+    
+    % Publications section
+    \input{sections/publications}
+    
+    % Experience section
+    \input{sections/experience}
+
+\end{document}
