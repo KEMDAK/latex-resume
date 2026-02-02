@@ -22,13 +22,13 @@ jobs:
         run: |
           xelatex -interaction=nonstopmode resume.tex
           xelatex -interaction=nonstopmode resume.tex
-          mv resume.pdf Kareem_Mokhtar_Resume_Dark.pdf
+          mv resume.pdf resume_dark.pdf
 
       - name: Compile Light Theme Resume
         run: |
           xelatex -interaction=nonstopmode resume-light.tex
           xelatex -interaction=nonstopmode resume-light.tex
-          mv resume-light.pdf Kareem_Mokhtar_Resume_Light.pdf
+          mv resume-light.pdf resume_light.pdf
 
       - name: Checkout website repository
         uses: actions/checkout@v4
@@ -39,15 +39,15 @@ jobs:
 
       - name: Copy PDFs to website public folder
         run: |
-          cp Kareem_Mokhtar_Resume_Dark.pdf website/client/public/
-          cp Kareem_Mokhtar_Resume_Light.pdf website/client/public/
+          cp resume_dark.pdf website/client/public/
+          cp resume_light.pdf website/client/public/
 
       - name: Commit and push to website repository
         run: |
           cd website
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
-          git add client/public/Kareem_Mokhtar_Resume_Dark.pdf
-          git add client/public/Kareem_Mokhtar_Resume_Light.pdf
+          git add client/public/resume_dark.pdf
+          git add client/public/resume_light.pdf
           git diff --staged --quiet || git commit -m "Update resume PDFs from latex-resume repo"
           git push
