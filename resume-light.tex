@@ -14,36 +14,8 @@
 %	 DOCUMENT CONFIGURATION
 %----------------------------------------------------------------------------------------
 
-\documentclass[letterpaper]{resume-class-light}
+\documentclass[letterpaper,light]{resume-class}
 
-%----------------------------------------------------------------------------------------
-%	 SIDEBAR CONTENT (Languages, Skills, Activities)
-%----------------------------------------------------------------------------------------
-
-\input{sections/sidebar-content}
-
-%----------------------------------------------------------------------------------------
-%	 PERSONAL INFORMATION
-%----------------------------------------------------------------------------------------
-
-\input{sections/personal-info}
-
-%----------------------------------------------------------------------------------------
-%	 DOCUMENT BODY
-%----------------------------------------------------------------------------------------
-
-\begin{document}
-
-    % Render the sidebar with personal info, languages, skills, and activities
-    \makeprofile
-    
-    % Education section
-    \input{sections/education}
-    
-    % Publications section
-    \input{sections/publications}
-    
-    % Experience section
-    \input{sections/experience}
-
-\end{document}
+% Shared preamble inputs and document body; the theme is selected by the
+% class option above. See resume-content.tex.
+\input{resume-content}

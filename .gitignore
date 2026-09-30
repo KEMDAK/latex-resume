@@ -15,6 +15,9 @@ __pycache__/
 *.synctex(busy)
 *.pdfsync
 
+# Generated PDFs (rebuilt by CI on every push — never committed)
+*.pdf
+
 # Temporary files
 *.tmp
 *.bak
