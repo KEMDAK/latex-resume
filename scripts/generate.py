@@ -355,6 +355,55 @@ def gen_resume_ts(d: dict) -> str:
 
 
 # ---------------------------------------------------------------------------
+# projects.ts (website project portfolio)
+# ---------------------------------------------------------------------------
+
+def _project_entry(p: dict) -> str:
+    lines = [
+        "  {",
+        f"    name: {ts_str(p['name'])},",
+        f"    description: {ts_str(p['description'])},",
+        f"    technologies: [{', '.join(ts_str(t) for t in p['technologies'])}],",
+    ]
+    if p.get("project_url"):
+        lines.append(f"    projectUrl: {ts_str(p['project_url'])},")
+    lines.append("  },")
+    return "\n".join(lines)
+
+
+def gen_projects_ts(projects: list) -> str:
+    n = len(projects)
+    out = [
+        "/**",
+        " * Personal Projects Data",
+        " * ",
+        f" * Contains all {n} personal projects from LinkedIn profile with descriptions, technologies, and links",
+        " * All projects are from LinkedIn profile with real descriptions and links where available",
+        " */",
+        "",
+        "export interface Project {",
+        "  /** Project name/title */",
+        "  name: string;",
+        "  /** Project description */",
+        "  description: string;",
+        "  /** Array of technologies used */",
+        "  technologies: string[];",
+        "  /** Optional project URL (GitHub, demo, or app store) */",
+        "  projectUrl?: string;",
+        "}",
+        "",
+        "/**",
+        " * Personal Projects",
+        f" * All {n} projects from LinkedIn profile, sorted by date (newest first)",
+        " */",
+        "export const projects: Project[] = [",
+    ]
+    out += [_project_entry(p) for p in projects]
+    out.append("];")
+    return "\n".join(out) + "\n"
+
+
+# ---------------------------------------------------------------------------
 # index.html meta descriptions
 # ---------------------------------------------------------------------------
 
@@ -403,6 +452,7 @@ def main() -> int:
         REPO_ROOT / "sections" / "experience.tex": gen_experience(data["experience"]),
         REPO_ROOT / "sections" / "sidebar-content.tex": gen_sidebar(data),
         website_repo / "client" / "src" / "data" / "resume.ts": gen_resume_ts(data),
+        website_repo / "client" / "src" / "data" / "projects.ts": gen_projects_ts(data["projects"]),
         website_repo / "client" / "index.html":
             sync_index_html(website_repo / "client" / "index.html", data["site_meta"]),
     }

@@ -20,8 +20,8 @@ jobs:
           path: website
           token: ${{ secrets.WEBSITE_REPO_TOKEN }}
 
-      # Regenerate sections/*.tex, website resume.ts and index.html meta tags
-      # from resume.yaml (single source of truth) before compiling.
+      # Regenerate sections/*.tex, website resume.ts, projects.ts and index.html
+      # meta tags from resume.yaml (single source of truth) before compiling.
       - name: Generate resume sources from resume.yaml
         run: |
           pip install --quiet pyyaml
@@ -64,6 +64,7 @@ jobs:
           git add client/public/resume_dark.pdf
           git add client/public/resume_light.pdf
           git add client/src/data/resume.ts
+          git add client/src/data/projects.ts
           git add client/index.html
           git diff --staged --quiet || git commit -m "Update resume PDFs and data from latex-resume repo"
           git push

@@ -9,10 +9,10 @@ generates the 5 files under `sections/` from it — **do not edit those `.tex`
 files by hand**; your changes will be overwritten on the next generation.
 
 The same generator also produces the website data
-(`client/src/data/resume.ts` and the meta descriptions in `client/index.html`)
+(`client/src/data/resume.ts`, `client/src/data/projects.ts`, and the meta
+descriptions in `client/index.html`)
 in the [personal-resume-website](https://github.com/KEMDAK/personal-resume-website)
-repo. The only website content *not* covered is `client/src/data/projects.ts`
-(the project portfolio), which is still edited manually.
+repo.
 
 **Workflow:** edit `resume.yaml` → run
 `python3 scripts/generate.py --website-repo ../personal-resume-website`
