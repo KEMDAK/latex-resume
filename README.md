@@ -31,8 +31,10 @@ latex-resume/
 ├── resume.yaml                   # SOURCE OF TRUTH - all resume content lives here
 ├── scripts/
 │   └── generate.py               # Generates sections/*.tex + website data from resume.yaml
-├── resume.tex                    # Main document (imports all sections)
-├── resume-class.cls              # Custom LaTeX class for styling
+├── resume.tex                    # Dark theme entry point (thin wrapper, imports shared content)
+├── resume-light.tex              # Light theme entry point (thin wrapper, [light] option)
+├── resume-content.tex            # Shared document: preamble inputs + body (imported by both)
+├── resume-class.cls              # Custom LaTeX class (dark default, [light]/[dark] option)
 ├── sections/                     # GENERATED - do not edit by hand
 │   ├── personal-info.tex         # Name, contact details, links
 │   ├── sidebar-content.tex       # Languages, skills, activities
@@ -41,8 +43,7 @@ latex-resume/
 │   └── experience.tex            # Work experience
 ├── fonts/
 │   └── segoeuib.ttf              # Segoe UI Bold for headings
-├── output/
-│   └── resume.pdf                # Generated PDF
+├── output/                       # Local build output (gitignored, not committed)
 ├── .gitignore                    # Git ignore rules
 ├── LICENSE.md                    # MIT License
 └── README.md                     # This file
@@ -78,9 +79,12 @@ Uncomment the relevant `web: {exclude: true}` entry in `resume.yaml` (e.g. eSEED
 Meta roles) and regenerate — it appears back in the PDF automatically.
 
 ### Color Scheme
-The resume uses a green terminal aesthetic:
-- **Sidebar (dark background)**: Bright green `#00ff00`
-- **Main content (light background)**: Darker green `#00aa00`
+The resume ships in two themes from the single `resume-class.cls`
+(`\documentclass[light]{resume-class}` selects the light palette):
+- **Dark** — green terminal aesthetic (default):
+  - **Sidebar (dark background)**: Bright green `#00ff00`
+  - **Main content (light background)**: Darker green `#00aa00`
+- **Light** — GitHub-style palette (blue `#0366d6` sidebar)
 
 To customize colors, edit `resume-class.cls` and modify:
 - `sidegreen` - Bright green for sidebar elements
