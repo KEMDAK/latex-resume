@@ -9,12 +9,14 @@
 #   - sections/*.tex            (compiled by the CI into resume_dark.pdf /
 #                                resume_light.pdf via resume.tex / resume-light.tex)
 #   - ../personal-resume-website/client/src/data/resume.ts
+#   - ../personal-resume-website/client/src/data/projects.ts
 #     (use  python3 scripts/generate.py --website-repo <path>)
 #   - meta descriptions in ../personal-resume-website/client/index.html
 #
 # The CI workflow (.github/workflows/build-and-deploy.yml) runs the generator
 # before compiling, so pushing a resume.yaml change to master rebuilds the
-# PDFs and pushes the regenerated resume.ts + index.html to the website repo.
+# PDFs and pushes the regenerated resume.ts + projects.ts + index.html to the
+# website repo.
 #
 # Conventions:
 #   - Plain-text fields are shared by both targets. The .tex generator escapes
