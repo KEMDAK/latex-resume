@@ -21,7 +21,7 @@ both PDFs, copies them plus the website data into the website repo, and GitHub
 Pages redeploys automatically.
 
 Parked experience (real roles kept for future use, e.g. the separate Meta entries
-and the eSEED internship) lives in `resume.yaml` as commented-out `latex_only`
+and the eSEED internship) lives in `resume.yaml` as commented-out `latex: {only: true}`
 entries — uncomment one and it is generated back into the PDF automatically.
 
 ## Project Structure
@@ -74,7 +74,7 @@ xelatex resume.tex
 > detail — the differences are intentional.
 
 ### Restoring parked experience
-Uncomment the relevant `latex_only` entry in `resume.yaml` (e.g. eSEED, separate
+Uncomment the relevant `latex: {only: true}` entry in `resume.yaml` (e.g. eSEED, separate
 Meta roles) and regenerate — it appears back in the PDF automatically.
 
 ### Color Scheme
