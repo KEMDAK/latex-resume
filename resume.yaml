@@ -1,0 +1,545 @@
+# =============================================================================
+# resume.yaml — SINGLE SOURCE OF TRUTH for Kareem Mokhtar's resume content
+# =============================================================================
+# Edit THIS file to update resume content. Then run:
+#
+#     python3 scripts/generate.py
+#
+# to regenerate:
+#   - sections/*.tex            (compiled by the CI into resume_dark.pdf /
+#                                resume_light.pdf via resume.tex / resume-light.tex)
+#   - ../personal-resume-website/client/src/data/resume.ts
+#   - ../personal-resume-website/client/src/data/projects.ts
+#     (use  python3 scripts/generate.py --website-repo <path>)
+#   - meta descriptions in ../personal-resume-website/client/index.html
+#
+# The CI workflow (.github/workflows/build-and-deploy.yml) runs the generator
+# before compiling, so pushing a resume.yaml change to master rebuilds the
+# PDFs and pushes the regenerated resume.ts + projects.ts + index.html to the
+# website repo.
+#
+# Conventions:
+#   - Plain-text fields are shared by both targets. The .tex generator escapes
+#     LaTeX special characters in them automatically.
+#   - Fields ending in _tex / the `latex:` block hold LaTeX-only overrides.
+#     They are used ONLY because the one-page PDF condenses or rewords content
+#     (e.g. Meta's three website entries become one combined PDF entry).
+#   - Target flags (symmetric):
+#       `latex: {exclude: true}` — entry appears on the website only
+#         (the PDF is one page; the entry was previously commented out there).
+#       `web: {exclude: true}`   — entry appears in the PDF only (a condensed
+#         entry that merges several website entries; the merged entries are
+#         then `latex: {exclude: true}`).
+#   - No flag — entry appears in both targets.
+# =============================================================================
+
+personal:
+  name: "Kareem Mokhtar"
+  job_title: "Senior Software Engineer"
+  # NOTE: spaces inside the braces are intentional — matches \cvjobtitle{ ... }
+  job_title_tex: " Senior Software Engineer "
+  phone: "+44 (0) 7931 937 440"
+  email: "contact@kareem-mokhtar.com"
+  site: "kareem-mokhtar.com"
+  linkedin: "kareem-mokhtar"
+  github: "KEMDAK"
+
+education:
+  # DISCREPANCY (kept as-is, not silently resolved):
+  #   .tex says "Oct 2018" / "Oct 2013", website says "Sep 2018" / "Sep 2013".
+  - degree: "Master of Science"
+    degree_short: "M. Sc."
+    field: "Computer Science"
+    school: "Technical University Munich"
+    school_tex: "Technical University of Munich, Germany"
+    school_url: "https://www.tum.de/en/"
+    school_url_tex: "https://www.tum.de/"
+    start: "Sep 2018"
+    start_tex: "Oct 2018"
+    end: "Feb 2022"
+  - degree: "Bachelor of Science"
+    degree_short: "B. Sc."
+    # DISCREPANCY (kept): .tex says "Computer Science and Engineering",
+    # website says "Computer Science & Engineering".
+    field: "Computer Science & Engineering"
+    field_tex: "Computer Science and Engineering"
+    school: "German University in Cairo"
+    school_tex: "German University in Cairo (GUC), Egypt"
+    school_url: "https://www.guc.edu.eg/"
+    school_url_tex: "http://www.guc.edu.eg/"
+    start: "Sep 2013"
+    start_tex: "Oct 2013"
+    end: "Jun 2018"
+    # Verbatim LaTeX appended to the degree line in the PDF (GPA note).
+    extra_tex: ' \textbf{ GPA: 1.12 (German A)}'
+    # Quirk preserved: the final education entry in the .tex has no {\} arg.
+    trailing_break_tex: false
+
+# PDF-only: the website has no publications section.
+publications:
+  - first_author: "Mokhtar, Kareem"
+    other_authors: "Syed Saqib Bukhari, and Andreas Dengel"
+    title: "OCR Error Correction: State-of-the-Art vs an NMT-based Approach"
+    venue: "2018 13th IAPR International Workshop on Document Analysis Systems (DAS). IEEE, 2018"
+    url: "https://ieeexplore.ieee.org/abstract/document/8395234"
+
+languages:
+  # DISCREPANCY (kept): .tex says German "Elementary (B1)",
+  # website says "Elementary proficiency".
+  - name: "Arabic"
+    level: "Native"
+    level_ts: "Native or bilingual proficiency"
+  - name: "English"
+    level: "Native"
+    level_ts: "Native or bilingual proficiency"
+  - name: "German"
+    level: "Elementary (B1)"
+    level_ts: "Elementary proficiency"
+
+# PDF sidebar skills (the website uses the richer `skills` groups below instead).
+skills_sidebar:
+  - "Problem Solving"
+  - "Quick Learner"
+  - "Team Player"
+  - "Software System Design"
+  - "Full Stack Development"
+programming_languages_sidebar:
+  Main: ["Java", "JS", "Golang"]
+  Experienced: ["PHP", "Python", "C/C++"]
+  Used Before: ["Scala"]
+
+# PDF sidebar activities.
+activities:
+  - title: "IEEE GUC Student Branch:"
+    text: "Led a Team of 14 software developers building projects across different platforms."
+  - title: "Competitive Programming:"
+    bullets:
+      - "Solved 1500+ algorithmic challenges on different online judges."
+      - "Finalist (out of 150+ teams) in ACM ECPC 2016."
+  - title: "Junior Teaching Assistant:"
+    text: "Assisted in teaching CS courses at GUC (Intro to CS, Data Structures, OOP)"
+
+# Website-only skill groups (each skill links to its official site where known).
+skills:
+  - category: "Backend & Systems"
+    items:
+      - {name: "Node.js", url: "https://nodejs.org/"}
+      - {name: "ExpressJS", url: "https://expressjs.com/"}
+      - {name: "Go", url: "https://go.dev/"}
+      - {name: "Java", url: "https://www.java.com/"}
+      - {name: "PHP", url: "https://www.php.net/"}
+      - {name: "Python", url: "https://www.python.org/"}
+      - {name: "Scala", url: "https://www.scala-lang.org/"}
+      - {name: "Apache Spark", url: "https://spark.apache.org/"}
+  - category: "Frontend & Web"
+    items:
+      - {name: "React", url: "https://react.dev/"}
+      - {name: "AngularJS", url: "https://angularjs.org/"}
+      - {name: "Android", url: "https://developer.android.com/"}
+      - {name: "Ionic", url: "https://ionicframework.com/"}
+      - {name: "HTML", url: "https://developer.mozilla.org/en-US/docs/Web/HTML"}
+      - {name: "CSS", url: "https://developer.mozilla.org/en-US/docs/Web/CSS"}
+      - {name: "Qt", url: "https://www.qt.io/"}
+      - {name: "WordPress", url: "https://wordpress.org/"}
+  - category: "Databases & Systems"
+    items:
+      - {name: "MongoDB", url: "https://www.mongodb.com/"}
+      - {name: "MySQL", url: "https://www.mysql.com/"}
+      - {name: "MariaDB", url: "https://mariadb.org/"}
+      - {name: "Apache Cassandra", url: "https://cassandra.apache.org/"}
+      - {name: "Elastic Search", url: "https://www.elastic.co/elasticsearch"}
+      - {name: "TimeScaleDB", url: "https://www.timescale.com/"}
+      - {name: "RDBMS"}
+  - category: "DevOps & Infrastructure"
+    items:
+      - {name: "Kubernetes", url: "https://kubernetes.io/"}
+      - {name: "RabbitMQ", url: "https://www.rabbitmq.com/"}
+      - {name: "gRPC", url: "https://grpc.io/"}
+      - {name: "Docker", url: "https://www.docker.com/"}
+      - {name: "Kafka", url: "https://kafka.apache.org/"}
+  - category: "Programming Languages"
+    items:
+      - {name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript"}
+      - {name: "Java", url: "https://www.java.com/"}
+      - {name: "C", url: "https://en.cppreference.com/w/c"}
+      - {name: "C++", url: "https://isocpp.org/"}
+      - {name: "Go", url: "https://go.dev/"}
+      - {name: "TypeScript", url: "https://www.typescriptlang.org/"}
+      - {name: "Python", url: "https://www.python.org/"}
+      - {name: "Scala", url: "https://www.scala-lang.org/"}
+  - category: "Competitive Programming"
+    items:
+      - {name: "Algorithms"}
+      - {name: "Data Structures"}
+      - {name: "Problem Solving"}
+      - {name: "ACM ICPC", url: "https://icpc.global/"}
+
+# Website-only certifications.
+certifications:
+  - name: "Google Developer Challenge Scholarship"
+    issuer: "Udacity"
+    issuer_url: "https://www.udacity.com/"
+    date: "Nov 2017"
+
+# ---------------------------------------------------------------------------
+# Experience — one list, two renderings.
+# `bullets` feeds the website `description` array verbatim.
+# `latex:` overrides feed the one-page PDF (condensed wording, merged entries).
+# ---------------------------------------------------------------------------
+experience:
+  # --- PDF-only condensed Meta entry (merges the three website entries below)
+  - web: {exclude: true}
+    tex_comment: "META (Full-time) - Combined entry showing promotions"
+    title_tex: 'Software Engineer $\rightarrow$ Senior Software Engineer'
+    company: "Meta"
+    company_url_tex: "https://about.meta.com/"
+    start: "Jun 2022"
+    end: "Present"
+    bullets_tex:
+      - 'Promoted twice: Junior SWE (Jun 2022) $\rightarrow$ SWE (Jan 2023) $\rightarrow$ Senior SWE (Jun 2024).'
+      - "Leading technical initiatives and architecting scalable systems for Meta platforms."
+      - "Mentoring engineers and driving code quality improvements across the team."
+      - '\textbf{Location: London, UK}'
+
+  # --- PARKED: separate Meta entries. Uncomment to restore them to the PDF
+  # (they generate as tex-only entries; the website keeps its own 3 entries).
+  # - web: {exclude: true}
+  #   tex_comment: "META - Separate entries (parked)"
+  #   title: "Senior Software Engineer"
+  #   company: "Meta"
+  #   company_url: "https://about.meta.com/"
+  #   start: "Jun 2024"
+  #   end: "Present"
+  #   bullets_tex:
+  #     - 'Leading technical initiatives and architecting scalable systems for Meta platforms.'
+  #     - 'Mentoring engineers and driving code quality improvements across the team.'
+  #     - '\textbf{Location: London, UK}'
+  # - web: {exclude: true}
+  #   tex_comment: "META - Separate entries (parked)"
+  #   title: "Software Engineer"
+  #   company: "Meta"
+  #   company_url: "https://about.meta.com/"
+  #   start: "Jan 2023"
+  #   end: "Jun 2024"
+  #   bullets_tex:
+  #     - 'Developed scalable systems and features for Meta platforms.'
+  #     - 'Collaborated with cross-functional teams on high-impact projects.'
+  #     - '\textbf{Location: London, UK}'
+  # - web: {exclude: true}
+  #   tex_comment: "META - Separate entries (parked)"
+  #   title: "Junior Software Engineer"
+  #   company: "Meta"
+  #   company_url: "https://about.meta.com/"
+  #   start: "Jun 2022"
+  #   end: "Jan 2023"
+  #   bullets_tex:
+  #     - 'Built and maintained backend services for Meta products.'
+  #     - 'Participated in code reviews and design discussions.'
+  #     - '\textbf{Location: London, UK}'
+
+  - title: "Senior Software Engineer"
+    company: "Meta"
+    company_url: "https://www.meta.com/"
+    start: "Jun 2024"
+    end: "Present"
+    location: "Greater London, England, United Kingdom"
+    is_current: true
+    type: "professional"
+    bullets:
+      - "Leading technical initiatives and architecting scalable systems"
+      - "Mentoring junior engineers and driving code quality improvements"
+      - "Contributing to high-impact projects across Meta platforms"
+    latex: {exclude: true}  # covered by the combined Meta entry above
+
+  - title: "Software Engineer"
+    company: "Meta"
+    company_url: "https://www.meta.com/"
+    start: "Jan 2023"
+    end: "Jun 2024"
+    location: "Greater London, England, United Kingdom"
+    type: "professional"
+    bullets:
+      - "Developing scalable systems and features for Meta platforms"
+      - "Collaborating with cross-functional teams on high-impact projects"
+      - "Contributing to codebase optimization and performance improvements"
+    latex: {exclude: true}  # covered by the combined Meta entry above
+
+  - title: "Junior Software Engineer"
+    company: "Meta"
+    company_url: "https://www.meta.com/"
+    start: "Jun 2022"
+    end: "Jan 2023"
+    location: "Greater London, England, United Kingdom"
+    type: "professional"
+    bullets:
+      - "Building and maintaining backend services"
+      - "Participating in code reviews and design discussions"
+      - "Implementing features for Meta products"
+    latex: {exclude: true}  # covered by the combined Meta entry above
+
+  - tex_comment: "ABB - Master Thesis"
+    title: "Master Thesis Project"
+    company: "ABB"
+    company_url: "https://www.abb.com/global/en"
+    company_url_tex: "https://www.abb.com/"
+    start: "Sep 2021"
+    end: "Feb 2022"
+    location: "Baden-Württemberg, Germany"
+    type: "professional"
+    bullets:
+      - "Conducted research and development for industrial automation"
+      - "Skills: C, C++"
+    latex:
+      bullets:
+        - "Conducted research and development for industrial automation."
+        - '\textbf{Tools: C, C++. Location: Germany}'
+
+  - tex_comment: "META - Internship"
+    title: "Software Engineer Intern"
+    company: "Meta"
+    company_url: "https://www.meta.com/"
+    company_url_tex: "https://about.meta.com/"
+    start: "Jun 2021"
+    end: "Aug 2021"
+    type: "professional"
+    bullets:
+      - "Part of the Integrity Experience team"
+      - "Responsible for empowering users to make informed decisions on Meta platforms"
+      - "Tools: Hacklang (PHP), Python"
+    latex:
+      bullets:
+        - "Part of the Integrity Experience team, empowering users to make informed decisions on Meta platforms."
+        - '\textbf{Tools: Hacklang (PHP), Python.}'
+
+  - tex_comment: "HubSpot - Internship"
+    title: "Software Engineer Intern"
+    company: "HubSpot"
+    company_url: "https://www.hubspot.com/"
+    start: "Mar 2021"
+    end: "May 2021"
+    type: "professional"
+    bullets:
+      - "Part of the Billing Management Experience team"
+      - "Responsible for comprehensibility of Billing-related PDF documents"
+      - "Tools: Java, React, HTML, CSS, Kafka"
+    latex:
+      bullets:
+        # NOTE: trailing space after "documents." preserved — matches current .tex byte-for-byte.
+        - "Part of the Billing Management Experience team. Improved comprehensibility of Billing-related PDF documents. "
+        - '\textbf{Tools: Java, React, HTML, CSS, Kafka.}'
+
+  # DISCREPANCY (kept): .tex company is "Bleenco GmbH", website is "Bleenco";
+  # website tools add TypeScript + AngularJS; website has an extra
+  # "Architected systems..." bullet.
+  - tex_comment: "Bleenco GmbH"
+    title: "Lead Software Engineer"
+    company: "Bleenco"
+    company_tex: "Bleenco GmbH"
+    company_url: "https://bleenco.com/"
+    start: "Dec 2018"
+    end: "Feb 2021"
+    location: "Munich, Bavaria, Germany"
+    type: "professional"
+    bullets:
+      - "Led a team of developers designing scalable software solutions"
+      - "Architected systems for occupational safety and compliance"
+      - "Tools: Golang, C++, TypeScript, TimeScaleDB, RabbitMQ, GRPC, AngularJS, Kubernetes"
+    latex:
+      bullets:
+        - "Led a team of developers designing scalable solutions for occupational safety."
+        - '\textbf{Tools: Golang, C++, TimeScaleDB, RabbitMQ, GRPC, Kubernetes.}'
+
+  # DISCREPANCY (kept): title "Backend Developer" (.tex) vs "Back-end Developer"
+  # (website); url elmenus.com vs www.elmenus.com; website has an extra
+  # "Analyzed user data..." bullet; "Cassandra" vs "Apache Cassandra".
+  - tex_comment: "elmenus"
+    title: "Back-end Developer"
+    title_tex: "Backend Developer"
+    company: "elmenus"
+    company_url: "https://www.elmenus.com/"
+    company_url_tex: "https://elmenus.com/"
+    start: "Jul 2018"
+    end: "Sep 2018"
+    type: "professional"
+    bullets:
+      - "Developed backend services for restaurant discovery and ordering platform"
+      - "Analyzed user data to improve platform experience"
+      - "Tools: NodeJS, Scala, Apache Spark, MariaDB, Apache Cassandra, Elastic Search"
+    latex:
+      bullets:
+        - "Developed backend services for restaurant discovery and ordering platform."
+        - '\textbf{Tools: NodeJS, Scala, Apache Spark, MariaDB, Cassandra, Elastic Search.}'
+
+  # --- PDF-only condensed DFKI entry (merges the two website entries below).
+  # DISCREPANCY (kept): .tex has ONE entry (Apr 2017–Dec 2018, OCR focus);
+  # the website has TWO entries with different dates and content
+  # (a Jan–Dec 2018 freelancing music-recommender entry + a Jan 2017–Dec 2018
+  # Junior Researcher entry).
+  - web: {exclude: true}
+    tex_comment: "DFKI"
+    title_tex: "Junior Researcher / Software Engineer"
+    company: "DFKI"
+    company_url_tex: "http://www.dfki.de/"
+    start: "Apr 2017"
+    end: "Dec 2018"
+    bullets_tex:
+      - 'Designed OCR error correction system using RNNs, reducing error by 3\% over state-of-the-art.'
+      - "Part of DAAD Excellence Scholarship."
+      - '\textbf{Tools: Python, TensorFlow, ExpressJS, MySQL}'
+
+  - title: "Software Engineer (Free Lancing)"
+    company: "Deutsches Forschungszentrum für Künstliche Intelligenz (DFKI)"
+    company_url: "https://www.dfki.de/en/web"
+    start: "Jan 2018"
+    end: "Dec 2018"
+    type: "professional"
+    bullets:
+      - "Developed proof of concept for Tensor Factorization Music Recommender system"
+      - "Implemented recommendation algorithm, backend server, and Android application"
+      - "Tools: Java, ExpressJS, MySQL"
+    latex: {exclude: true}  # covered by the combined DFKI entry above
+
+  - title: "Junior Researcher"
+    company: "Deutsches Forschungszentrum für Künstliche Intelligenz (DFKI)"
+    company_url: "https://www.dfki.de/en/web"
+    start: "Jan 2017"
+    end: "Dec 2018"
+    type: "professional"
+    bullets:
+      - "Designed and implemented OCR correction system for historical documents"
+      - "System based on Recurrent Neural Networks, reducing error by 3% over state-of-the-art"
+      - "Part of Excellence scholarship funded by DFKI and DAAD"
+    latex: {exclude: true}  # covered by the combined DFKI entry above
+
+  # Active on the website; a parked tex-only copy sits below (uncomment to restore).
+  - title: "Software Developer (Intern)"
+    company: "eSEED"
+    company_url: "https://eseed.net"
+    start: "Jun 2016"
+    end: "Jul 2016"
+    type: "professional"
+    bullets:
+      - "Developed Android applications and web applications"
+      - "Tools: WordPress, Java, ExpressJS, Qt, MySQL, MongoDB"
+    latex: {exclude: true}
+
+  # --- PARKED: eSEED internship (tex wording). Uncomment to restore to the PDF.
+  # - web: {exclude: true}
+  #   tex_comment: "eSEED internship (parked)"
+  #   title: "Software Developer Intern"
+  #   company: "eSEED"
+  #   company_url: "https://eseed.net/"
+  #   start: "Jun 2016"
+  #   end: "Jul 2016"
+  #   bullets_tex:
+  #     - 'Worked as a part of a software development team to develop different Android applications, Web applications using WordPress and web-servers using ExpressJS and Node.js.'
+  #     - '\textbf{Tools: WordPress, Java, ExpressJS, Qt, MySQL, MongoDB}'
+
+# Website-only volunteer experience.
+volunteer:
+  - title: "Competitive Programming Contestant"
+    company: "ACM Programming Contests"
+    company_url: "https://www.acm.org/"
+    start: "Jun 2016"
+    end: "Present"
+    is_current: true
+    type: "volunteer"
+    bullets:
+      - "Finalist (out of 150+ teams) in ACM Egyptian Collegiate Programming Contest 2016"
+      - "Ranked 35th (out of 150+ teams) in ACM Arab Collegiate Programming Contest 2016"
+      - "Solved 1000+ algorithmic challenges on various online judges"
+  - title: "Lead Software Developer"
+    company: "IEEE German University in Cairo Student Branch"
+    company_url: "https://www.ieeeguc.tech"
+    start: "Mar 2016"
+    end: "Apr 2017"
+    type: "volunteer"
+    bullets:
+      - "Led a team of 14 voluntarily recruited software developers"
+      - "Divided team into three sub-teams: Web back-end, Web front-end, and Android development"
+      - "Provided hands-on experience in software development through collaborative projects"
+
+# Website-only teaching experience.
+teaching:
+  - title: "Junior Teaching Assistant"
+    company: "The German University in Cairo"
+    company_url: "https://www.guc.edu.eg/"
+    start: "Sep 2015"
+    end: "Jun 2016"
+    type: "teaching"
+    bullets:
+      - "Introduction to Computer Science (CSEN 102): Teaching first semester students basic CS concepts and programming fundamentals using Python"
+      - "Data Structures and Algorithms (CSEN 301): Teaching third semester students data structures (arrays, stacks, queues, trees, heaps, hash tables) using Java"
+      - "Introduction to Computer Programming (CSEN 202): Teaching second semester students programming basics using Java"
+
+# ---------------------------------------------------------------------------
+# Website <meta> descriptions (client/index.html). The generator syncs these
+# so the SEO copy stays consistent with the resume content above.
+# ---------------------------------------------------------------------------
+site_meta:
+  description: "Senior Software Engineer at Meta specializing in scalable backend systems, distributed computing, and full-stack development. 10+ years of experience including AI research at DFKI and competitive programming. View my interactive resume with projects, skills, and career timeline."
+  og_description: "Senior Software Engineer at Meta specializing in scalable backend systems and distributed computing. Explore my interactive resume with 10+ years of experience, projects, and technical skills."
+  twitter_description: "Senior Software Engineer at Meta specializing in scalable backend systems. 10+ years of experience in distributed computing, AI research, and competitive programming."
+  jsonld_person_description: "Senior Software Engineer at Meta with expertise in building scalable systems, backend development, and competitive programming. Previously led teams at Bleenco and conducted AI research at DFKI."
+  jsonld_website_description: "Interactive resume and portfolio of Kareem Mokhtar, Senior Software Engineer at Meta"
+
+# Website project portfolio (generates client/src/data/projects.ts).
+# Website-only; not rendered in the PDF.
+projects:
+  - name: "Mini Monopoly"
+    description: "An embedded system implementation using Arduino to automate the well-known monopoly game. Creates a physical monopoly game that has the same functionality and features of the digital version."
+    technologies: ["Arduino", "C", "Embedded Systems", "Hardware"]
+
+  - name: "أُهرُب يا وِلد (Ohrob ya weld) - Horror Game"
+    description: "A horror game implemented using OpenGL. The story involves a character trapped in a haunted house who must figure out a 4-digit pass code to escape the exit door by solving puzzles and collecting clues scattered throughout the house before time runs out."
+    technologies: ["OpenGL", "C++", "Game Development", "Graphics Programming"]
+
+  - name: "AskTube"
+    description: "A chat bot that answers questions about videos (e.g., \"what is the most popular music video?\", \"show me trending videos\", \"show me videos about cats\"). The chat bot was implemented using Go for the server-side and an Android application for the client-side."
+    technologies: ["Java", "Go", "Android", "Chatbot"]
+
+  - name: "Mini Operating System"
+    description: "A simplified OS implementation with C that supports creating and deleting directories, creating, deleting, copying, moving, editing and viewing text files."
+    technologies: ["C", "Operating Systems", "Systems Programming"]
+    project_url: "https://github.com/KEMDAK/Mini_Operating_System"
+
+  - name: "Smart Trash"
+    description: "A trash can that opens automatically when someone wants to throw trash in it. Also sends a signal to the residential trash pick-up company whenever it is full."
+    technologies: ["C", "IoT", "Embedded Systems", "Hardware"]
+
+  - name: "Mini Chatting Application"
+    description: "A simple chatting application implemented using Java socket programming. It is a LAN chatting application based on a Client-Server model."
+    technologies: ["Java", "Networking", "Socket Programming"]
+
+  - name: "GUC Switching Assistant"
+    description: "An Android application for GUC students to make the switching tutorial process easier by automating the search process. Worked on this project with a team of two. The application was released in summer 2015."
+    technologies: ["JavaScript", "Node.js", "Android"]
+    project_url: "https://github.com/KEMDAK/GUC-Switching-Assistant"
+
+  - name: "IEEEGUCSB-System"
+    description: "A server-side project developed to manage IEEE GUC student branch (a large working group with hierarchical structure). The project acts as a task assignment, evaluation system and channel of communication between members. Developed using ExpressJS."
+    technologies: ["HTML", "JavaScript", "Node.js", "Express.js"]
+    project_url: "https://github.com/KEMDAK/IEEEGUCSB-System"
+
+  - name: "Processor Simulator"
+    description: "A project to simulate a Superscalar out-of-order 16-bit RISC processor. Implemented a full memory hierarchy with dynamic number of caches and a processor that uses Tomasulo's algorithm with speculation to simulate any assembly program."
+    technologies: ["Java", "Computer Architecture", "Systems Design"]
+
+  - name: "IEEE GUC SB Elections System"
+    description: "A secure election system for conducting the yearly upper board elections of IEEE GUC student branch through their website. Implemented using the Laravel framework."
+    technologies: ["HTML", "Laravel", "PHP", "Web Development"]
+    project_url: "https://github.com/KEMDAK/IEEE_Elections_System"
+
+  - name: "Air-Madagascar Online Booking System"
+    description: "An educational project implementing a single page web application to act as a mock online reservation system for Air Madagascar using the MEAN stack (MongoDB, ExpressJS, AngularJS and Node.js). Also includes a hybrid mobile application implemented using Ionic."
+    technologies: ["HTML", "Node.js", "MongoDB", "AngularJS", "Ionic", "Express.js"]
+
+  - name: "Relational Database Management System (RDBMS)"
+    description: "A relational database management system implemented in Java. Supports creation of tables and indexes using B+ tree data structure, insertion, deletion, selection (search), and update operations."
+    technologies: ["Java", "Databases", "Data Structures", "B+ Trees"]
+    project_url: "https://github.com/KEMDAK/DataBase-Mini_Engine"
+
+  - name: "Yo-Gi-Oh the Game"
+    description: "A card game built from scratch in a team of two students using Java and Java Swing for the UI. This project was picked by the university as one of the best 10 projects in 2015."
+    technologies: ["Java", "Swing", "Game Development"]
+    project_url: "https://github.com/KEMDAK/YU-GI-OH"

@@ -2,18 +2,43 @@
 
 A professional one-page resume built with LaTeX, featuring a green terminal aesthetic that matches [kareem-mokhtar.com](https://kareem-mokhtar.com).
 
+## Single source of truth
+
+`resume.yaml` is the source of truth for all resume content. `scripts/generate.py`
+generates the 5 files under `sections/` from it — **do not edit those `.tex`
+files by hand**; your changes will be overwritten on the next generation.
+
+The same generator also produces the website data
+(`client/src/data/resume.ts`, `client/src/data/projects.ts`, and the meta
+descriptions in `client/index.html`)
+in the [personal-resume-website](https://github.com/KEMDAK/personal-resume-website)
+repo.
+
+**Workflow:** edit `resume.yaml` → run
+`python3 scripts/generate.py --website-repo ../personal-resume-website`
+(or just push — CI does it for you) → the `build-and-deploy` workflow compiles
+both PDFs, copies them plus the website data into the website repo, and GitHub
+Pages redeploys automatically.
+
+Parked experience (real roles kept for future use, e.g. the separate Meta entries
+and the eSEED internship) lives in `resume.yaml` as commented-out `web: {exclude: true}`
+entries — uncomment one and it is generated back into the PDF automatically.
+
 ## Project Structure
 
 ```
 latex-resume/
+├── resume.yaml                   # SOURCE OF TRUTH - all resume content lives here
+├── scripts/
+│   └── generate.py               # Generates sections/*.tex + website data from resume.yaml
 ├── resume.tex                    # Main document (imports all sections)
 ├── resume-class.cls              # Custom LaTeX class for styling
-├── sections/
+├── sections/                     # GENERATED - do not edit by hand
 │   ├── personal-info.tex         # Name, contact details, links
 │   ├── sidebar-content.tex       # Languages, skills, activities
 │   ├── education.tex             # Education entries
 │   ├── publications.tex          # Publications
-│   └── experience.tex            # Work experience (including commented entries)
+│   └── experience.tex            # Work experience
 ├── fonts/
 │   └── segoeuib.ttf              # Segoe UI Bold for headings
 ├── output/
@@ -42,23 +67,15 @@ xelatex resume.tex
 
 ## Customization
 
-### Updating Personal Information
-Edit `sections/personal-info.tex` to update:
-- Name, job title
-- Phone, email, website
-- LinkedIn, GitHub
+> All resume content (personal info, experience, education, skills, languages,
+> publications, volunteer/teaching, certifications) is edited in `resume.yaml`
+> (see "Single source of truth" above), **not** in the `.tex` files directly.
+> The PDF keeps a condensed one-page rendering while the website shows the full
+> detail — the differences are intentional.
 
-### Updating Experience
-Edit `sections/experience.tex` to:
-- Add new positions
-- Modify existing entries
-- Uncomment archived entries (eSEED, separate Meta roles)
-
-### Updating Skills/Languages
-Edit `sections/sidebar-content.tex` to modify:
-- Languages and proficiency levels
-- Technical and soft skills
-- Extracurricular activities
+### Restoring parked experience
+Uncomment the relevant `web: {exclude: true}` entry in `resume.yaml` (e.g. eSEED, separate
+Meta roles) and regenerate — it appears back in the PDF automatically.
 
 ### Color Scheme
 The resume uses a green terminal aesthetic:
