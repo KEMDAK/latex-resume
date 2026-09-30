@@ -24,12 +24,12 @@
 #   - Fields ending in _tex / the `latex:` block hold LaTeX-only overrides.
 #     They are used ONLY because the one-page PDF condenses or rewords content
 #     (e.g. Meta's three website entries become one combined PDF entry).
-#   - Target flags (both live in the `latex:` block):
-#       `latex: {only: true}`    — entry appears in the PDF only (a condensed
-#         entry that merges several website entries; the merged entries are
-#         then `latex: {exclude: true}`).
+#   - Target flags (symmetric):
 #       `latex: {exclude: true}` — entry appears on the website only
 #         (the PDF is one page; the entry was previously commented out there).
+#       `web: {exclude: true}`   — entry appears in the PDF only (a condensed
+#         entry that merges several website entries; the merged entries are
+#         then `latex: {exclude: true}`).
 #   - No flag — entry appears in both targets.
 # =============================================================================
 
@@ -188,7 +188,7 @@ certifications:
 # ---------------------------------------------------------------------------
 experience:
   # --- PDF-only condensed Meta entry (merges the three website entries below)
-  - latex: {only: true}
+  - web: {exclude: true}
     tex_comment: "META (Full-time) - Combined entry showing promotions"
     title_tex: 'Software Engineer $\rightarrow$ Senior Software Engineer'
     company: "Meta"
@@ -203,7 +203,7 @@ experience:
 
   # --- PARKED: separate Meta entries. Uncomment to restore them to the PDF
   # (they generate as tex-only entries; the website keeps its own 3 entries).
-  # - latex: {only: true}
+  # - web: {exclude: true}
   #   tex_comment: "META - Separate entries (parked)"
   #   title: "Senior Software Engineer"
   #   company: "Meta"
@@ -214,7 +214,7 @@ experience:
   #     - 'Leading technical initiatives and architecting scalable systems for Meta platforms.'
   #     - 'Mentoring engineers and driving code quality improvements across the team.'
   #     - '\textbf{Location: London, UK}'
-  # - latex: {only: true}
+  # - web: {exclude: true}
   #   tex_comment: "META - Separate entries (parked)"
   #   title: "Software Engineer"
   #   company: "Meta"
@@ -225,7 +225,7 @@ experience:
   #     - 'Developed scalable systems and features for Meta platforms.'
   #     - 'Collaborated with cross-functional teams on high-impact projects.'
   #     - '\textbf{Location: London, UK}'
-  # - latex: {only: true}
+  # - web: {exclude: true}
   #   tex_comment: "META - Separate entries (parked)"
   #   title: "Junior Software Engineer"
   #   company: "Meta"
@@ -375,7 +375,7 @@ experience:
   # the website has TWO entries with different dates and content
   # (a Jan–Dec 2018 freelancing music-recommender entry + a Jan 2017–Dec 2018
   # Junior Researcher entry).
-  - latex: {only: true}
+  - web: {exclude: true}
     tex_comment: "DFKI"
     title_tex: "Junior Researcher / Software Engineer"
     company: "DFKI"
@@ -424,7 +424,7 @@ experience:
     latex: {exclude: true}
 
   # --- PARKED: eSEED internship (tex wording). Uncomment to restore to the PDF.
-  # - latex: {only: true}
+  # - web: {exclude: true}
   #   tex_comment: "eSEED internship (parked)"
   #   title: "Software Developer Intern"
   #   company: "eSEED"

@@ -134,9 +134,9 @@ def _tex_entry_block(e: dict) -> str:
 
 
 def gen_experience(entries: list) -> str:
-    # Preserve yaml order; latex-only entries sit inline where defined.
+    # Preserve yaml order; web-excluded entries sit inline where defined.
     tex_entries = [e for e in entries
-                   if (e.get("latex") or {}).get("only") or not (e.get("latex") or {}).get("exclude")]
+                   if (e.get("web") or {}).get("exclude") or not (e.get("latex") or {}).get("exclude")]
     out = [banner("EXPERIENCE"), "\\section{Experience}", "\\begin{twenty}"]
     out.append("\n\n".join(_tex_entry_block(e) for e in tex_entries))
     out.append("\\end{twenty}")
@@ -272,7 +272,7 @@ def _timeline_section(title: str, const: str, entries: list) -> str:
 def gen_resume_ts(d: dict) -> str:
     parts = [TS_HEADER]
     parts.append(_timeline_section("Professional Experience", "professionalExperience",
-                                  [e for e in d["experience"] if not (e.get("latex") or {}).get("only")]))
+                                  [e for e in d["experience"] if not (e.get("web") or {}).get("exclude")]))
     parts.append(_timeline_section("Volunteer Experience", "volunteerExperience", d["volunteer"]))
     parts.append(_timeline_section("Teaching Experience", "teachingExperience", d["teaching"]))
 
