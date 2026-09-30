@@ -13,6 +13,20 @@ jobs:
       - name: Checkout latex-resume repository
         uses: actions/checkout@v4
 
+      - name: Checkout website repository
+        uses: actions/checkout@v4
+        with:
+          repository: KEMDAK/personal-resume-website
+          path: website
+          token: ${{ secrets.WEBSITE_REPO_TOKEN }}
+
+      # Regenerate sections/*.tex, website resume.ts and index.html meta tags
+      # from resume.yaml (single source of truth) before compiling.
+      - name: Generate resume sources from resume.yaml
+        run: |
+          pip install --quiet pyyaml
+          python3 scripts/generate.py --website-repo website
+
       # Compile with a prebuilt TeX Live Docker image (xu-cheng/latex-action)
       # instead of apt-installing ~2GB of texlive-* packages on every run.
       # The apt approach stalled and killed every previous run of this workflow.
@@ -37,13 +51,6 @@ jobs:
           mv resume.pdf resume_dark.pdf
           mv resume-light.pdf resume_light.pdf
 
-      - name: Checkout website repository
-        uses: actions/checkout@v4
-        with:
-          repository: KEMDAK/personal-resume-website
-          path: website
-          token: ${{ secrets.WEBSITE_REPO_TOKEN }}
-
       - name: Copy PDFs to website public folder
         run: |
           cp resume_dark.pdf website/client/public/
@@ -56,5 +63,7 @@ jobs:
           git config user.email "actions@github.com"
           git add client/public/resume_dark.pdf
           git add client/public/resume_light.pdf
-          git diff --staged --quiet || git commit -m "Update resume PDFs from latex-resume repo"
+          git add client/src/data/resume.ts
+          git add client/index.html
+          git diff --staged --quiet || git commit -m "Update resume PDFs and data from latex-resume repo"
           git push
