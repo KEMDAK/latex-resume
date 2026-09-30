@@ -197,6 +197,42 @@ experience:
       - "Mentoring engineers and driving code quality improvements across the team."
       - '\textbf{Location: London, UK}'
 
+  # --- PARKED: separate Meta entries. Uncomment to restore them to the PDF
+  # (they generate as tex-only entries; the website keeps its own 3 entries).
+  # - latex_only: true
+  #   tex_comment: "META - Separate entries (parked)"
+  #   title: "Senior Software Engineer"
+  #   company: "Meta"
+  #   company_url: "https://about.meta.com/"
+  #   start: "Jun 2024"
+  #   end: "Present"
+  #   bullets_tex:
+  #     - 'Leading technical initiatives and architecting scalable systems for Meta platforms.'
+  #     - 'Mentoring engineers and driving code quality improvements across the team.'
+  #     - '\textbf{Location: London, UK}'
+  # - latex_only: true
+  #   tex_comment: "META - Separate entries (parked)"
+  #   title: "Software Engineer"
+  #   company: "Meta"
+  #   company_url: "https://about.meta.com/"
+  #   start: "Jan 2023"
+  #   end: "Jun 2024"
+  #   bullets_tex:
+  #     - 'Developed scalable systems and features for Meta platforms.'
+  #     - 'Collaborated with cross-functional teams on high-impact projects.'
+  #     - '\textbf{Location: London, UK}'
+  # - latex_only: true
+  #   tex_comment: "META - Separate entries (parked)"
+  #   title: "Junior Software Engineer"
+  #   company: "Meta"
+  #   company_url: "https://about.meta.com/"
+  #   start: "Jun 2022"
+  #   end: "Jan 2023"
+  #   bullets_tex:
+  #     - 'Built and maintained backend services for Meta products.'
+  #     - 'Participated in code reviews and design discussions.'
+  #     - '\textbf{Location: London, UK}'
+
   - title: "Senior Software Engineer"
     company: "Meta"
     company_url: "https://www.meta.com/"
@@ -371,7 +407,7 @@ experience:
       - "Part of Excellence scholarship funded by DFKI and DAAD"
     latex: {exclude: true}  # covered by the combined DFKI entry above
 
-  # Parked .tex block lives in parked_tex below; active on website.
+  # Active on the website; a parked tex-only copy sits below (uncomment to restore).
   - title: "Software Developer (Intern)"
     company: "eSEED"
     company_url: "https://eseed.net"
@@ -383,69 +419,17 @@ experience:
       - "Tools: WordPress, Java, ExpressJS, Qt, MySQL, MongoDB"
     latex: {exclude: true}
 
-# Parked experience blocks — real experience Kareem keeps commented-out in
-# experience.tex for future use (entries that don't fit the one-page PDF).
-# Stored verbatim; the generator emits them as comments anchored after the
-# given entry (`after` matches that entry's tex_comment, or "END" for the end
-# of the section).
-parked_tex:
-  - after: "META (Full-time) - Combined entry showing promotions"
-    lines:
-      - '    % COMMENTED OUT - Separate Meta entries (combined above)'
-      - '    % \twentyitem'
-      - '    %    {Jun 2024}'
-      - '    %    {Present}'
-      - '    %    {Senior Software Engineer}'
-      - '    %    {\large\textbf{\href{https://about.meta.com/}{Meta}}}'
-      - '    %    {'
-      - '    %        \begin{itemize}'
-      - '    %            \item Leading technical initiatives and architecting scalable systems for Meta platforms.'
-      - '    %            \item Mentoring engineers and driving code quality improvements across the team.'
-      - '    %            \item \textbf{Location: London, UK}'
-      - '    %        \end{itemize}'
-      - '    %    }'
-      - '    %    {\\}'
-      - '    % \twentyitem'
-      - '    %    {Jan 2023}'
-      - '    %    {Jun 2024}'
-      - '    %    {Software Engineer}'
-      - '    %    {\large\textbf{\href{https://about.meta.com/}{Meta}}}'
-      - '    %    {'
-      - '    %        \begin{itemize}'
-      - '    %            \item Developed scalable systems and features for Meta platforms.'
-      - '    %            \item Collaborated with cross-functional teams on high-impact projects.'
-      - '    %            \item \textbf{Location: London, UK}'
-      - '    %        \end{itemize}'
-      - '    %    }'
-      - '    %    {\\}'
-      - '    % \twentyitem'
-      - '    %    {Jun 2022}'
-      - '    %    {Jan 2023}'
-      - '    %    {Junior Software Engineer}'
-      - '    %    {\large\textbf{\href{https://about.meta.com/}{Meta}}}'
-      - '    %    {'
-      - '    %        \begin{itemize}'
-      - '    %            \item Built and maintained backend services for Meta products.'
-      - '    %            \item Participated in code reviews and design discussions.'
-      - '    %            \item \textbf{Location: London, UK}'
-      - '    %        \end{itemize}'
-      - '    %    }'
-      - '    %    {\\}'
-  - after: "END"
-    lines:
-      - '    % COMMENTED OUT - eSEED internship (can be restored if needed)'
-      - '    % \twentyitem'
-      - '    %    {Jun 2016}'
-      - '    %    {Jul 2016}'
-      - '    %    {Software Developer Intern}'
-      - '    %    {\large\textbf{\href{https://eseed.net/}{eSEED}}}'
-      - '    %    {'
-      - '    %        \begin{itemize}'
-      - '    %            \item Worked as a part of a software development team to develop different Android applications, Web applications using WordPress and web-servers using ExpressJS and Node.js.'
-      - '    %            \item \textbf{Tools: WordPress, Java, ExpressJS, Qt, MySQL, MongoDB}'
-      - '    %        \end{itemize}'
-      - '    %    }'
-      - '    %    {\\}'
+  # --- PARKED: eSEED internship (tex wording). Uncomment to restore to the PDF.
+  # - latex_only: true
+  #   tex_comment: "eSEED internship (parked)"
+  #   title: "Software Developer Intern"
+  #   company: "eSEED"
+  #   company_url: "https://eseed.net/"
+  #   start: "Jun 2016"
+  #   end: "Jul 2016"
+  #   bullets_tex:
+  #     - 'Worked as a part of a software development team to develop different Android applications, Web applications using WordPress and web-servers using ExpressJS and Node.js.'
+  #     - '\textbf{Tools: WordPress, Java, ExpressJS, Qt, MySQL, MongoDB}'
 
 # Website-only volunteer experience.
 volunteer:

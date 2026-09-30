@@ -133,27 +133,12 @@ def _tex_entry_block(e: dict) -> str:
     return "\n".join(lines)
 
 
-def gen_experience(entries: list, parked: list) -> str:
+def gen_experience(entries: list) -> str:
     # Preserve yaml order; latex_only entries sit inline where defined.
     tex_entries = [e for e in entries
                    if e.get("latex_only") or not (e.get("latex") or {}).get("exclude")]
-    parked_by_anchor = {p["after"]: p["lines"] for p in (parked or [])}
-    segments = []
-    for e in tex_entries:
-        seg = _tex_entry_block(e)
-        # Parked blocks (real experience kept commented-out for future use).
-        # The original file separates them from the anchor entry with a
-        # 4-space-indented blank line; reproduce that exactly.
-        if e.get("tex_comment") in parked_by_anchor:
-            seg += "\n    \n" + "\n".join(parked_by_anchor[e["tex_comment"]])
-        segments.append(seg)
-    body = "\n\n".join(segments)
-    # Blocks parked at the very end of the section (e.g. eSEED internship).
-    for p in (parked or []):
-        if p["after"] == "END":
-            body += "\n\n" + "\n".join(p["lines"])
     out = [banner("EXPERIENCE"), "\\section{Experience}", "\\begin{twenty}"]
-    out.append(body)
+    out.append("\n\n".join(_tex_entry_block(e) for e in tex_entries))
     out.append("\\end{twenty}")
     out.append("")
     return "\n".join(out)
@@ -415,7 +400,7 @@ def main() -> int:
         REPO_ROOT / "sections" / "personal-info.tex": gen_personal_info(data["personal"]),
         REPO_ROOT / "sections" / "education.tex": gen_education(data["education"]),
         REPO_ROOT / "sections" / "publications.tex": gen_publications(data["publications"]),
-        REPO_ROOT / "sections" / "experience.tex": gen_experience(data["experience"], data.get("parked_tex")),
+        REPO_ROOT / "sections" / "experience.tex": gen_experience(data["experience"]),
         REPO_ROOT / "sections" / "sidebar-content.tex": gen_sidebar(data),
         website_repo / "client" / "src" / "data" / "resume.ts": gen_resume_ts(data),
         website_repo / "client" / "index.html":
